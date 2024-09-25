@@ -17,4 +17,34 @@ public class UrlEntity {
     private String url;
 
     private String urlShortener;
+
+    public UrlEntity() {
+    }
+
+    public UrlEntity(Long id, String url, String urlShortener) {
+        this.id = id;
+        this.url = url;
+        this.urlShortener = urlShortener;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getUrlShortener() {
+        return urlShortener;
+    }
+
+    public void setUrlShortener(String urlShortener) {
+        this.urlShortener = urlShortener;
+    }
+
 }
