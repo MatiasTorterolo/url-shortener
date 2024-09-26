@@ -4,11 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>URL shortener</title>
+    <link rel="stylesheet" th:href="@{/css/homeViewStyle.css}">
 </head>
 
 <body>
+    <div class="main-container">
 
+        <div class="title">URL SHORTENER</div>
+
+        <form action="@{/shorten}" method="post">
+
+            <input class="url" name="url" type="text" placeholder="Insert url address..." required>
+            <button class="submit-button" type="submit">SHORTEN</button>
+
+        </form>
+
+        <!-- if null, it won´t be shown, else, it will be shown -->
+        <div th:if="${shortenerUrl}">
+            <div class="urlShortenerView">
+                <p>This is the URL shortener view</p>
+            </div>
+        </div>
+
+
+    </div>
 </body>
 
 </html>
