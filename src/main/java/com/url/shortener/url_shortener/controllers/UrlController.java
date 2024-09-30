@@ -21,13 +21,14 @@ public class UrlController {
             String urlShortened = shortUrl(url);
 
             model.addAttribute("url", url);
+            model.addAttribute("show", true);
             model.addAttribute("showUrlShortened", urlShortened);
 
             return "homeView";
 
         } else {
 
-            model.addAttribute("showUrlShortened", isValidUrl(url));
+            model.addAttribute("show", false);
             return "homeView";
         }
     }
