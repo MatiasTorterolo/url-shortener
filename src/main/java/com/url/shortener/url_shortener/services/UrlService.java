@@ -15,13 +15,18 @@ public class UrlService {
     @Autowired
     private IUrlRepository iUrlRepository;
 
+    public UrlEntity createUrlEntity(UrlEntity entity) {
+
+        return iUrlRepository.save(entity);
+    }
+
     public String generateShortUrl(String longUrl) {
 
         String shortUrl = UUID.randomUUID().toString().replace("-", "").substring(0, 6).toUpperCase();
 
         UrlEntity urlEntity = new UrlEntity(longUrl, shortUrl);
 
-        iUrlRepository.save(urlEntity);
+        createUrlEntity(urlEntity);
 
         return shortUrl;
     }
