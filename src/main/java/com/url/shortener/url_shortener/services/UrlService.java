@@ -33,6 +33,6 @@ public class UrlService {
 
     public Optional<UrlEntity> findByShortUrl(String shortUrl) {
 
-        return iUrlRepository.findByUrlShortenerOptional(shortUrl);
+        return iUrlRepository.findByUrlShortener(shortUrl);
     }
 }
