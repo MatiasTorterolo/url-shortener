@@ -1,51 +1,62 @@
 package com.url.shortener.url_shortener.controllers;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-
-import java.util.UUID;
+import com.url.shortener.url_shortener.entities.UrlEntity;
+import com.url.shortener.url_shortener.services.UrlService;
+import com.url.shortener.url_shortener.services.ValidationService;
 
 @Controller
 public class UrlController {
 
+    @Autowired
+    private UrlService urlService;
+
+    @Autowired
+    private ValidationService validationService;
+
     @PostMapping("/shorten")
-    public String shortenUrl(@RequestParam("url") String url, Model model) {
+    public String shortenUrl(@RequestParam("url") String longUrl, Model model) {
 
-        if (isValidUrl(url)) {
+        if (validationService.isValidUrl(longUrl)) {
 
-            String urlShortened = shortUrl(url);
+            String urlShortened = urlService.generateShortUrl(longUrl);
 
-            model.addAttribute("url", url);
             model.addAttribute("show", true);
             model.addAttribute("showUrlShortened", urlShortened);
 
         } else {
+            model.addAttribute("errorMesagge", "Invalid URL address");
             model.addAttribute("error", true);
         }
 
         return "homeView";
     }
 
-    public boolean isValidUrl(String url) {
+    @GetMapping("/{shortUrl}")
+    public RedirectView redirectToLongUrl(@PathVariable("shortUrl") String shortUrl, Model model) {
 
-        try {
-            new URL(url);
-            return true;
-        } catch (MalformedURLException e) {
+        Optional<UrlEntity> urlEntityOptional = urlService.findByShortUrl(shortUrl);
 
-            return false;
+        if (urlEntityOptional.isPresent()) {
+            String longUrl = urlEntityOptional.get().getLongUrl();
+
+            return new RedirectView(longUrl);
+        } else {
+            model.addAttribute("errorMesagge", "Invalid URL address");
+            model.addAttribute("error", true);
+            return new RedirectView("/home");
         }
+
     }
 
-    public String shortUrl(String url) {
-
-        url = UUID.randomUUID().toString().replace("-", "").substring(0, 5).toUpperCase();
-
-        return url;
-    }
 }
