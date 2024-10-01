@@ -24,13 +24,11 @@ public class UrlController {
             model.addAttribute("show", true);
             model.addAttribute("showUrlShortened", urlShortened);
 
-            return "homeView";
-
         } else {
-
-            model.addAttribute("show", false);
-            return "homeView";
+            model.addAttribute("error", true);
         }
+
+        return "homeView";
     }
 
     public boolean isValidUrl(String url) {
