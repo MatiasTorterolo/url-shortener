@@ -11,10 +11,10 @@ import com.url.shortener.url_shortener.entities.UrlEntity;
 @Repository
 public interface IUrlRepository extends JpaRepository<UrlEntity, Long> {
 
-    @Query("select u from UrlEntity u where u.url = ?1")
-    Optional<UrlEntity> findByUrl(String url);
+    @Query("select u from UrlEntity u where u.longUrl = ?1")
+    Optional<UrlEntity> findByLongUrl(String longUrl);
 
     @Query("select u from UrlEntity u where u.urlShortener = ?1")
-    Optional<UrlEntity> findByUrlShortenerOptional(String urlShortener);
+    Optional<UrlEntity> findByUrlShortener(String urlShortener);
 
 }
