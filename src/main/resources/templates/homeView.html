@@ -23,7 +23,7 @@
         <!-- if null, it won´t be shown, else, it will be shown -->
         <div th:if="${show != null and show}">
             <div class="urlShortenerView">
-                <p>Shortened URL: <span th:text="${showUrlShortened}"></span></p>
+                <p>Shortened URL: <span th:href="@{'/' + ${showUrlShortened}}" th:text="${showUrlShortened}"></span></p>
             </div>
         </div>
 
