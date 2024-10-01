@@ -14,16 +14,16 @@ public class UrlEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String url;
+    private String longUrl;
 
     private String urlShortener;
 
     public UrlEntity() {
     }
 
-    public UrlEntity(Long id, String url, String urlShortener) {
-        this.id = id;
-        this.url = url;
+    public UrlEntity(String longUrl, String urlShortener) {
+
+        this.longUrl = longUrl;
         this.urlShortener = urlShortener;
     }
 
@@ -31,12 +31,12 @@ public class UrlEntity {
         return id;
     }
 
-    public String getUrl() {
-        return url;
+    public String getLongUrl() {
+        return longUrl;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setLongUrl(String longUrl) {
+        this.longUrl = longUrl;
     }
 
     public String getUrlShortener() {
