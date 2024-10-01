@@ -15,16 +15,20 @@
 
         <form action="@{/shorten}" method="post">
 
-            <input class="url" name="url" type="text" placeholder="Insert url address..." required>
+            <input class="urlInput" name="url" type="text" placeholder="Insert url address..." required>
             <button class="submit-button" type="submit">SHORTEN</button>
 
         </form>
 
         <!-- if null, it won´t be shown, else, it will be shown -->
-        <div th:if="${shortenerUrl}">
+        <div th:if="${showUrlShortened}">
             <div class="urlShortenerView">
-                <p>This is the URL shortener view</p>
+                <p>Shortened URL: <span th:text="${showUrlShortened}"></span></p>
             </div>
+        </div>
+
+        <div th:if="${showUrlShortened == null}">
+            <p>Error: Invalid URL</p>
         </div>
 
 
