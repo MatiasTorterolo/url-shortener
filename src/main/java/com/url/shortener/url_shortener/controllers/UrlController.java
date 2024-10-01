@@ -44,7 +44,7 @@ public class UrlController {
 
     public String shortUrl(String url) {
 
-        url = UUID.randomUUID().toString().replace("-", "").substring(0, 5);
+        url = UUID.randomUUID().toString().replace("-", "").substring(0, 5).toUpperCase();
 
         return url;
     }
