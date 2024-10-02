@@ -22,13 +22,22 @@ public class UrlService {
 
     public String generateShortUrl(String longUrl) {
 
-        String shortUrl = UUID.randomUUID().toString().replace("-", "").substring(0, 6).toUpperCase();
+        Optional<UrlEntity> entity = iUrlRepository.findByLongUrl(longUrl);
 
-        UrlEntity urlEntity = new UrlEntity(longUrl, shortUrl);
+        if (entity.isPresent()) {
 
-        createUrlEntity(urlEntity);
+            return entity.get().getUrlShortener();
+        } else {
 
-        return shortUrl;
+            String shortUrl = UUID.randomUUID().toString().replace("-", "").substring(0, 6).toUpperCase();
+
+            UrlEntity urlEntity = new UrlEntity(longUrl, shortUrl);
+
+            createUrlEntity(urlEntity);
+
+            return shortUrl;
+        }
+
     }
 
     public Optional<UrlEntity> findByShortUrl(String shortUrl) {
