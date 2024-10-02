@@ -35,7 +35,8 @@ public class UrlController {
             model.addAttribute("showUrlShortened", urlShortened);
 
         } else {
-            model.addAttribute("errorMesagge", "Invalid URL address");
+            model.addAttribute("errorMessage",
+                    "Invalid URL address, try again, the url must have the protocol 'http'.");
             model.addAttribute("error", true);
         }
 
