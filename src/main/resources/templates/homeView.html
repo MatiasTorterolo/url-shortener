@@ -18,6 +18,10 @@
             URL SHORTENER
         </h1>
 
+        <!-- 
+        In this form, a URL is expected to be received, and then sent in the request with the post method.
+        -->
+
         <div class="form">
             <form th:action="@{/shorten}" method="post">
 
@@ -27,7 +31,9 @@
             </form>
         </div>
 
-        <!-- if null, it won´t be shown, else, it will be shown -->
+        <!-- 
+        if null, it won´t be shown, else, it will be shown 
+        -->
         <div th:if="${show != null and show}">
             <div class="urlShortenerView">
                 <p>Shortened URL: <a th:href="@{'/' + ${showUrlShortened}}" th:text="${showUrlShortened}"></a></p>
