@@ -28,11 +28,5 @@ If use Gradle:
 "./gradlew bootRun"
 
 # Documentation
-In your terminal:
-
-If use Maven:
-"mvn javadoc:javadoc", then "open target/site/apidocs/index.html"
-
-If use Gradle:
-"./gradlew javadoc", then "open build/docs/javadoc/index.html"
+https://matiastorterolo.github.io/url-shortener/
 
