@@ -6,19 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URL shortener</title>
     <link rel="stylesheet" th:href="@{/css/homeViewStyle.css}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div class="main-container">
 
-        <div class="title">URL SHORTENER</div>
+        <h1>
+            URL SHORTENER
+        </h1>
 
-        <form th:action="@{/shorten}" method="post">
+        <div class="form">
+            <form th:action="@{/shorten}" method="post">
 
-            <input class="urlInput" name="url" type="text" placeholder="Insert url address..." required>
-            <button class="submit-button" type="submit">SHORTEN</button>
+                <input class="urlInput" name="url" type="text" placeholder="Insert url address..." required>
+                <button class="submit-button" type="submit">SHORTEN</button>
 
-        </form>
+            </form>
+        </div>
 
         <!-- if null, it won´t be shown, else, it will be shown -->
         <div th:if="${show != null and show}">
@@ -28,7 +35,7 @@
         </div>
 
         <div th:if="${error != null and error}">
-            <span>
+            <span class="errorMessage">
                 <p th:text="${errorMessage}"></p>
             </span>
         </div>

@@ -11,20 +11,87 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: 'Lato';
+    font-size: 16px;
 }
 
 .main-container {
 
     text-align: center;
-    background-color: #aa4eaa;
+    background-color: whitesmoke;
     padding: 200px;
     border: 5px solid #14b0a7;
     border-radius: 5px;
     width: 25%;
 }
 
-.title {
-
+h1 {
+    margin-top: -100px;
     text-align: center;
+    font-size: 70px;
+}
 
+.form {
+
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+form {
+
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+
+}
+
+.urlInput {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    margin-bottom: 70px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.submit-button {
+    width: 50%;
+    padding: 10px;
+    font-weight: 550;
+    font-family: 'Lato';
+    font-size: 16px;
+    background-color: #45a049;
+    color: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #45a049;
+}
+
+.urlShortenerView {
+
+    font-family: 'Lato';
+    background-color: #a4ffaa;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.errorMessage {
+
+    font-family: 'Lato';
+    color: #D8000C;
+    background-color: #FFBABA;
+    display: block;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    font-size: 16px;
 }
