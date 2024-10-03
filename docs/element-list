@@ -1,0 +1,5 @@
+com.url.shortener.url_shortener
+com.url.shortener.url_shortener.controllers
+com.url.shortener.url_shortener.entities
+com.url.shortener.url_shortener.repositories
+com.url.shortener.url_shortener.services
