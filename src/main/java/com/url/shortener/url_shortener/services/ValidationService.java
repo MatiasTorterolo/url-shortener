@@ -5,9 +5,20 @@ import java.net.URL;
 
 import org.springframework.stereotype.Service;
 
+/**
+ * This service is responsible for validating the url addresses.
+ * 
+ * @author MTA
+ */
 @Service
 public class ValidationService {
 
+    /**
+     * This method validates the long url.
+     * 
+     * @param longUrl A long url.
+     * @return True if valid or false if invalid.
+     */
     public boolean isValidUrl(String longUrl) {
 
         try {

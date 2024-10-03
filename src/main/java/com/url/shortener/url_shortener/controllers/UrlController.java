@@ -15,6 +15,11 @@ import com.url.shortener.url_shortener.entities.UrlEntity;
 import com.url.shortener.url_shortener.services.UrlService;
 import com.url.shortener.url_shortener.services.ValidationService;
 
+/**
+ * Controller to handle url shortening
+ * 
+ * @author MTA
+ */
 @Controller
 public class UrlController {
 
@@ -24,6 +29,13 @@ public class UrlController {
     @Autowired
     private ValidationService validationService;
 
+    /**
+     * This method handles http POST requests on the rute /shorten
+     * 
+     * @param longUrl The url address to shorten
+     * @param model   The model for the view
+     * @return The home view
+     */
     @PostMapping("/shorten")
     public String shortenUrl(@RequestParam("url") String longUrl, Model model) {
 
@@ -43,6 +55,15 @@ public class UrlController {
         return "homeView";
     }
 
+    /**
+     * This method handles http GET requests to redirect a short url to long url
+     * (url original)
+     * 
+     * @param shortUrl The short url
+     * @param model    The model for the view
+     * @return A RedirectView to longUrl (original url) or homeView if the url is
+     *         invalid.
+     */
     @GetMapping("/{shortUrl}")
     public RedirectView redirectToLongUrl(@PathVariable("shortUrl") String shortUrl, Model model) {
 
@@ -57,7 +78,6 @@ public class UrlController {
             model.addAttribute("error", true);
             return new RedirectView("/home");
         }
-
     }
 
 }
